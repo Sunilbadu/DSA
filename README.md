@@ -13,10 +13,13 @@ based on the IOE Tribhuvan University Computer Engineering syllabus
 - Hashing (Chaining, Open Addressing)
 - Recursion and Dynamic Programming basics
 
+
+                              -SUNIL_DATTA_BADU
+                                PAS081BCT043
+
 ## ⚡ How to Run
 Clone the repository:
 ```bash
 git clone https://github.com/username/dsa-repo.git
 
--SUNIL_DATTA_BADUBCT
-PAS081BCT043
+
