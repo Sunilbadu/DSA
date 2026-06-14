@@ -2,10 +2,10 @@
 using namespace std;
 int main()
 {
-	int val,i,pos,n=5;
+	int val,i,pos,n=4;
 	int arr[10]={10,20,30,40,50};
 	
-	for (i = 0; i< n ; i++)
+	for (i = 0; i<= n ; i++)
 	{
 		cout << "The element at index "<< i << " is "<< arr[i] << endl;
 	}
@@ -24,7 +24,7 @@ int main()
 	arr[pos]=val;
 	n++;
 	
-	for (i = 0; i< n ;i++)
+	for (i = 0; i<= n ;i++)
 	{
 		cout << "The element at index "<< i << " is "<< arr[i] << endl;
 	}
