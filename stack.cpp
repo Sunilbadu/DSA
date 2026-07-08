@@ -1,56 +1,82 @@
 #include <iostream>
 using namespace std;
-#define MAX 5  
-int stack[MAX];
 
-int top=-1;
+class Stack {
+    static const int MAX_SIZE = 100;
+    int data[MAX_SIZE];
+    int topIndex;
 
-    void push(int value) {
-        if (top == MAX - 1) {
-            cout << "Stack Overflow \n";
-            return;
-        }
-        else{
-        top++;
-        stack[top] = value;
-        cout << value << " pushed into stack \n";
-		}
-      
+public:
+    Stack() : topIndex(-1) {}
+
+    bool isEmpty() const {
+        return topIndex == -1;
     }
 
-    void pop() {
-        if (top == -1) {
-            cout << "Stack Underflow\n";
-            return;
-        }
-         else{
-        cout << stack[top] << " popped from stack \n";
-        top--;
-		 }
-   
-      
+    bool isFull() const {
+        return topIndex == MAX_SIZE - 1;
     }
 
-    void display() {
-        if (top == -1) {
-            cout << "Stack is Empty \n";
+    bool push(int value) {
+        if (isFull()) {
+            return false;
+        }
+        data[++topIndex] = value;
+        return true;
+    }
+
+    bool pop(int &value) {
+        if (isEmpty()) {
+            return false;
+        }
+        value = data[topIndex--];
+        return true;
+    }
+
+    bool peek(int &value) const {
+        if (isEmpty()) {
+            return false;
+        }
+        value = data[topIndex];
+        return true;
+    }
+
+    void display() const {
+        if (isEmpty()) {
+            cout << "Stack is empty." << endl;
             return;
         }
-        else{
-        	 cout << "Stack elements: "<<endl;
-        for (int i = top; i >= 0; i--) {
-            cout << stack[i] << endl;
+
+        cout << "Stack elements (top to bottom):" << endl;
+        for (int i = topIndex; i >= 0; --i) {
+            cout << data[i] << endl;
         }
-        cout << endl;
-		}
-       
     }
-int main() {  
-    push(10);
-    push(20);
-    push(30);
-    display();
-    pop();
-    display();
-    return 0;
-}
+};
+
+int main() {
+    Stack stack;
+    int value;
+
+    stack.push(10);
+    stack.push(20);
+    stack.push(30);
+
+    cout << "After pushing 10, 20, 30:" << endl;
+    stack.display();
+
+    if (stack.pop(value)) {
+        cout << value << " popped from stack." << endl;
+    } else {
+        cout << "Stack underflow." << endl;
+    }
+
+    cout << "After popping one item:" << endl;
+    stack.display();
+
+    if (stack.peek(value)) {
+        cout << "Top element is: " << value << endl;
+    } else {
+        cout << "Stack is empty." << endl;
+    }
+
