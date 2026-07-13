@@ -49,7 +49,7 @@ int main(){
 		}
 		
 		else if(ch==')'){
-			while(!s.empty() && s.top()!='('){
+			while( s.top()!='('){
 				postfix[j++] = s.top();
 				s.pop();
 			}
@@ -74,7 +74,7 @@ int main(){
 		 	postfix[j++]=s.top();
 		 	s.pop();
 		 }
-		 postfix[j] = '\0'; 
+
 		 cout<<"Postfix is: "<<postfix;
 		return 0;
 }
